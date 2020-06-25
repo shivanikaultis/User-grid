@@ -1,5 +1,6 @@
 export const dataSource = [
     {
+        "id": 1,
         "name" : "Sam",
         "age" : "25",
         "address" : "Sam",
@@ -7,6 +8,7 @@ export const dataSource = [
         "country" : "Sam"
     },
     {
+        "id": 2,
         "name" : "Peter",
         "age" : "26",
         "address" : "abc",
@@ -14,6 +16,7 @@ export const dataSource = [
         "country" : "abc"
     },
     {
+        "id": 3,
         "name" : "def",
         "age" : "24",
         "address" : "def",
@@ -21,6 +24,7 @@ export const dataSource = [
         "country" : "def"
     },
     {
+        "id": 3,
         "name" : "xyz",
         "age" : "28",
         "address" : "xyz",
@@ -28,6 +32,7 @@ export const dataSource = [
         "country" : "xyz"
     },
     {
+        "id": 4,
         "name" : "mno",
         "age" : "27",
         "address" : "mno",
@@ -35,10 +40,67 @@ export const dataSource = [
         "country" : "mno"
     },
     {
+        "id": 5,
         "name" : "pqr",
         "age" : "25",
         "address" : "pqr",
         "pincode" : "666666",
         "country" : "pqr"
+    },
+    {
+        "id": 6,
+        "name" : "Peter",
+        "age" : "26",
+        "address" : "abc",
+        "pincode" : "222222",
+        "country" : "abc"
+    },
+    {
+        "id": 7,
+        "name" : "Peter",
+        "age" : "26",
+        "address" : "abc",
+        "pincode" : "222222",
+        "country" : "abc"
+    },
+    {
+        "id": 8,
+        "name" : "Stew",
+        "age" : "26",
+        "address" : "abc",
+        "pincode" : "222222",
+        "country" : "abc"
+    },
+    {
+        "id": 9,
+        "name" : "Jose",
+        "age" : "26",
+        "address" : "abc",
+        "pincode" : "222222",
+        "country" : "abc"
+    },
+    {
+        "id": 10,
+        "name" : "Doe",
+        "age" : "26",
+        "address" : "abc",
+        "pincode" : "222222",
+        "country" : "abc"
+    },
+    {
+        "id": 11,
+        "name" : "Panther",
+        "age" : "26",
+        "address" : "abc",
+        "pincode" : "222222",
+        "country" : "abc"
+    },
+    {
+        "id": 12,
+        "name" : "Ben",
+        "age" : "26",
+        "address" : "abc",
+        "pincode" : "222222",
+        "country" : "abc"
     },
 ]

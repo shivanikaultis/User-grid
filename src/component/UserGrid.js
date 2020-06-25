@@ -4,15 +4,17 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import UserForm from './UserForm';
 import DeleteCellRenderer from "./DeleteCellRenderer";
-import {dataSource} from '../dataSource.js';
 import { Button } from 'reactstrap';
+import { connect } from 'react-redux';
 
 class UserGrid extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            gridData: [],
+            //gridData: [],
             columnDefs: [{
+                headerName: "Id", field: "id"
+            },{
                 headerName: "Name", field: "name"
             }, {
                 headerName: "Age", field: "age"
@@ -23,7 +25,7 @@ class UserGrid extends React.Component {
             }, {
                 headerName: "Country", field: "country"
             },
-            {cellRendererFramework: DeleteCellRenderer
+            { headerName: "Delete", cellRendererFramework: DeleteCellRenderer
             },
             ],
             isAddClick: false,
@@ -39,29 +41,36 @@ class UserGrid extends React.Component {
         })
     }
 
-    componentDidMount(){
-        this.setState({
-            gridData: dataSource
-        })
-    }
+    // componentDidMount(){
+    //     this.setState({
+    //         gridData: dataSource
+    //     })
+    // }
 
 
     onformSubmit(obj) {
-        const gridData = this.state.gridData;
-        gridData.push(obj);
+        // const gridData = this.state.gridData;
+        // gridData.push(obj);
+        // this.setState({
+        //     isAddClick: false,
+        //     gridData: gridData
+        // })
         this.setState({
-            isAddClick: false,
-            gridData: gridData
+            isAddClick: false
         })
+        this.props.addRow(obj);
     }
 
     render() {
+        console.log(this.props);
+        //const { gridData } = this.props;
         return (
             <div
                 className="ag-theme-alpine"
                 style={{
-                    height: '250px',
-                    width: 'auto'
+                    height: '500px',
+                    width: 'auto',
+                    margin: '30px'
                 }}
             >
                 {
@@ -69,9 +78,14 @@ class UserGrid extends React.Component {
                         <React.Fragment>
                             <AgGridReact
                                 columnDefs={this.state.columnDefs}
-                                rowData={this.state.gridData}>
+                                rowData={this.props.gridData}>
                             </AgGridReact>
-                            <Button onClick={this.onInputChangeValue}>Add Row</Button>
+                            <Button style={{
+                                marginTop: '20px'
+                            }} 
+                            onClick={this.onInputChangeValue}>
+                                Add Row
+                            </Button>
 
                         </React.Fragment>
                         : ''
@@ -86,4 +100,16 @@ class UserGrid extends React.Component {
     }
 }
 
-export default UserGrid;
+const mapStateToProps = (state) => {
+    return {
+        gridData: state
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+   return {
+       addRow: (obj) => { dispatch({type: 'ADD_ROW', payload: obj}) }
+   }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserGrid);

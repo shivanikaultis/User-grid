@@ -1,5 +1,7 @@
 import * as React from "react"
 import { Dialog } from "@reach/dialog"
+import { Button } from 'reactstrap';
+
 
 export default class ConfirmStatusChange extends React.Component {
   state = {
@@ -37,9 +39,8 @@ export default class ConfirmStatusChange extends React.Component {
           <Dialog>
             <h1>{this.props.title}</h1>
             <p>{this.props.description}</p>
-
-            <button onClick={this.hide}>Cancel</button>
-            <button onClick={this.confirm}>OK</button>
+            <Button style={{margin:'0 20px 0 20px'}}onClick={this.hide}>Cancel</Button>
+            <Button onClick={this.confirm}>OK</Button>
           </Dialog>
         )}
       </React.Fragment>

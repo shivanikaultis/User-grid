@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, Col } from 'reactstrap';
+import "bootstrap/dist/css/bootstrap.css";
 
 class UserForm extends Component {
     constructor(props) {
@@ -15,7 +16,7 @@ class UserForm extends Component {
 
     handleFormSubmit(e) {
         e.preventDefault();
-        this.props.onformSubmit(this.state.rowData, this.state.isDelete);
+        this.props.onformSubmit(this.state.rowData);
     }
 
     handleChange(evt) {
@@ -32,30 +33,32 @@ class UserForm extends Component {
 
     render() {
         return (
-            <Form className="login-form" onSubmit={this.handleFormSubmit}>
-                <FormGroup>
-                    <Label>Name</Label><br />
-                    <Input ref={(ref) => { this.nameInput = ref; }} name="name" value={this.state.name} onChange={this.handleChange} placeholder="Enter your name" /><br /><br />
-                </FormGroup>
-                <FormGroup>
-                    <Label>Age</Label><br />
-                    <Input name="age" ref={(ref) => { this.ageInput = ref; }} value={this.state.age} onChange={this.handleChange} placeholder="Enter your age" /><br /><br />
-                </FormGroup>
-                <FormGroup>
-                    <Label>Address</Label><br />
-                    <Input name="address" ref={(ref) => { this.addressInput = ref; }} value={this.state.address} onChange={this.handleChange} placeholder="Enter your address" /><br /><br />
-                </FormGroup>
-                <FormGroup>
-                    <Label>Pincode</Label><br />
-                    <Input name="pincode" value={this.state.pincode} ref={(ref) => { this.pincodeInput = ref; }} onChange={this.handleChange} placeholder="Enter your pincode" /><br /><br />
-                </FormGroup>
-                <FormGroup>
-                    <Label>Country</Label><br />
-                    <Input name="country" value={this.state.country} ref={(ref) => { this.countryInput = ref; }} onChange={this.handleChange} placeholder="Enter your country" /><br /><br />
-                </FormGroup>
-                <Button color="primary">Submit</Button>
+            <div className="form-container">
+                <Form className="login-form" onSubmit={this.handleFormSubmit}>
+                    <FormGroup>
+                        <Label>Name</Label>
+                        <Input name="name" value={this.state.name} onChange={this.handleChange} placeholder="Enter your name" />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label>Age</Label>
+                        <Input type='number' name="age" value={this.state.age} onChange={this.handleChange} placeholder="Enter your age" />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label>Address</Label>
+                        <Input  name="address" value={this.state.address} onChange={this.handleChange} placeholder="Enter your address" />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label>Pincode</Label>
+                        <Input type='number' name="pincode" value={this.state.pincode} onChange={this.handleChange} placeholder="Enter your pincode" />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label>Country</Label>
+                        <Input name="country" value={this.state.country} onChange={this.handleChange} placeholder="Enter your country" />
+                    </FormGroup>
+                    <Button>Submit</Button>
 
-            </Form>
+                </Form>
+            </div>
         );
     }
 }

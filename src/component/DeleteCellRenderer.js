@@ -1,6 +1,8 @@
 import React from 'react';
-import Confirm from "../Confirm"
-import "@reach/dialog/styles.css"
+import Confirm from "../Confirm";
+import "@reach/dialog/styles.css";
+import { Button } from 'reactstrap';
+import { connect } from 'react-redux';
 
 class DeleteCellRenderer extends React.Component {
     constructor(props) {
@@ -10,17 +12,30 @@ class DeleteCellRenderer extends React.Component {
 
     handleDelete = () => {
         let deletedRow = this.props.node.data;
-        this.props.node.gridApi.updateRowData({ remove: [deletedRow] });  // It will update the row
+         //this.props.node.gridApi.updateRowData({ remove: [deletedRow] });  // It will update the row
+        this.props.deleteRow(deletedRow.id);
     };
 
     render() {
         return (
             <Confirm title="Confirm" description="Are you sure you want to delete?">
                  {confirm => (
-                    <span><button onClick={confirm(this.handleDelete)}>X</button></span>
+                    <Button onClick={confirm(this.handleDelete)}>X</Button>
             )}
         </Confirm>
         )}
 }
 
-export default DeleteCellRenderer;
+const mapStateToProps = (state) => {
+    return {
+        gridData: state
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+   return {
+       deleteRow: (id) => { dispatch({type: 'DELETE_ROW', payload: id}) }
+   }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DeleteCellRenderer);
